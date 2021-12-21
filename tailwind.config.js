@@ -19,6 +19,16 @@ module.exports = {
                 '1/2': '50%',
                 '3/4': '75%',
                 '4xl': '56rem',
+            },
+            colors: {
+                'rose-600': '#e11d48',
+                'purple': '#3f3cbb',
+                'midnight': '#121063',
+                'metal': '#565584',
+                'tahiti': '#3ab7bf',
+                'silver': '#evebff',
+                'bubble-gum': '#ff77e9',
+                'bermuda': '#78dcca',
             }
         },
     },

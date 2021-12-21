@@ -57,6 +57,8 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    protected $dates = ['trial_ends_at'];
+
     public function listings()
     {
         return $this->hasMany(Listing::class);
@@ -70,5 +72,10 @@ class User extends Authenticatable
     public function savedListings()
     {
         return $this->belongsToMany(Listing::class);
+    }
+
+    public function billingData()
+    {
+        return $this->hasOne(UserBilling::class);
     }
 }

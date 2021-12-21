@@ -15,29 +15,6 @@
 
         @livewireStyles
 
-{{--        <style>--}}
-{{--            .StripeElement {--}}
-{{--                box-sizing: border-box;--}}
-{{--                height: 40px;--}}
-{{--                padding: 10px 12px;--}}
-{{--                border: 1px solid transparent;--}}
-{{--                border-radius: 4px;--}}
-{{--                background-color: white;--}}
-{{--                box-shadow: 0 1px 3px 0 #e6ebf1;--}}
-{{--                -webkit-transition: box-shadow 150ms ease;--}}
-{{--                transition: box-shadow 150ms ease;--}}
-{{--            }--}}
-{{--            .StripeElement--focus {--}}
-{{--                box-shadow: 0 1px 3px 0 #cfd7df;--}}
-{{--            }--}}
-{{--            .StripeElement--invalid {--}}
-{{--                border-color: #fa755a;--}}
-{{--            }--}}
-{{--            .StripeElement--webkit-autofill {--}}
-{{--                background-color: #fefde5 !important;--}}
-{{--            }--}}
-{{--        </style>--}}
-
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
@@ -58,6 +35,12 @@
 
             <!-- Page Content -->
             <main>
+                @if (auth()->user()->trial_ends_at)
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center text-lg bg-indigo-100">
+                        You have {{ now()->diffInDays(auth()->user()->trial_ends_at) }} days of free trial left.
+                        <a class="text-indigo-500" href="{{ route('billings.index') }}">Choose your plan</a> at any time.
+                    </div>
+                @endif
                 {{ $slot }}
             </main>
         </div>
