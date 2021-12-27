@@ -51,6 +51,10 @@
             {{ $stripeScripts }}
         @endif
 
+        @if (isset($customScripts))
+            {{ $customScripts }}
+        @endif
+
         @livewireScripts
     </body>
 </html>

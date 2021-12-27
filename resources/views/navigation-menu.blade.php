@@ -21,6 +21,11 @@
                     <x-jet-nav-link href="{{ route('billings.index') }}" :active="request()->routeIs('billings.index')">
                         {{ __('Billing') }}
                     </x-jet-nav-link>
+                    @can('tasks')
+                    <x-jet-nav-link href="{{ route('tasks.index') }}" :active="request()->routeIs('tasks.index')">
+                        {{ __('Tasks') }}
+                    </x-jet-nav-link>
+                    @endcan
                 </div>
             </div>
 
@@ -77,6 +82,7 @@
 
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
+
                     <x-jet-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
@@ -105,6 +111,12 @@
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}
                             </x-jet-dropdown-link>
+
+                            @if (!auth()->user()->parent_user_id)
+                                <x-jet-dropdown-link href="{{ route('members.index') }}" :active="request()->routeIs('members.index')">
+                                    {{ __('My Team') }}
+                                </x-jet-dropdown-link>
+                            @endif
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">

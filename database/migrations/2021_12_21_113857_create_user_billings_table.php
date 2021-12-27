@@ -15,11 +15,11 @@ class CreateUserBillingsTable extends Migration
     {
         Schema::create('user_billings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();;
             $table->string('company_name')->nullable();
             $table->string('address_line_1')->nullable();
             $table->string('address_line_2')->nullable();
-            $table->foreignId('country_id')->nullable();
+            $table->foreignId('country_id')->nullable()->constrained()->cascadeOnDelete();;
             $table->string('city')->nullable();
             $table->string('postcode')->nullable();
             $table->timestamps();

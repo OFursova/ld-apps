@@ -21,11 +21,13 @@ class InvoicesService
 
         $invoice = Invoice::make()
             ->buyer($customer)
-            ->discountByPercent(10)
-            ->taxRate(15)
-            ->shipping(1.99)
+            ->filename('invoices/' . $payment->id)
+//            ->discountByPercent(10)
+//            ->taxRate(15)
+//            ->shipping(1.99)
             ->addItem($item);
 
-        return $invoice->stream();
+        $invoice->save();
+//        return $invoice->stream();
     }
 }

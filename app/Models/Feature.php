@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Plan extends Model
+class Feature extends Model
 {
     use HasFactory;
 
     protected $guarded = ['id'];
 
-    public function features()
+    public function plans()
     {
-        $this->belongsToMany(Feature::class)->withPivot(['max_amount']);
+        $this->belongsToMany(Plan::class)->withPivot(['max_amount']);
     }
 }
