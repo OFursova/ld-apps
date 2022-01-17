@@ -112,6 +112,10 @@
                                 {{ __('Profile') }}
                             </x-jet-dropdown-link>
 
+                            <x-jet-dropdown-link href="{{ route('communities.index') }}">
+                                {{ __('Communities') }}
+                            </x-jet-dropdown-link>
+
                             @if (!auth()->user()->parent_user_id)
                                 <x-jet-dropdown-link href="{{ route('members.index') }}" :active="request()->routeIs('members.index')">
                                     {{ __('My Team') }}

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\BillingController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CommunityController;
+use App\Http\Controllers\CommunityPostController;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\MembersController;
 use App\Http\Controllers\MessageController;
@@ -52,6 +54,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     Route::resource('tasks', TaskController::class);
     Route::resource('members', MembersController::class);
+
+    Route::resource('communities', CommunityController::class);
+    Route::resource('communities.posts', CommunityPostController::class);
 });
 
 Route::get('invitation/{invitation_token}', [MembersController::class, 'invitation'])->name('invitation');
